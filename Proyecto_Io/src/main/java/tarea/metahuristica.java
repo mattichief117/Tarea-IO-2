@@ -1,83 +1,124 @@
 package tarea;
 import clase.comunas;
+import java.util.ArrayList;
+import java.util.List;
 
 public class metahuristica {
 
     public static void main(String[] args) {
         
-       comunas comunas = new comunas();
-       comunas.setId(3);
-       comunas.setComunas(2);
-       comunas.setComunas(4);
-       comunas.setComunas(1);
-       comunas.setCantidad(3);
-       comunas.setValor(1200);
+       List<comunas> com = new ArrayList<comunas>();
        
-       int[] array_comunas = comunas.obtener_comunas();
+       comunas comunas_1 = new comunas();
+       //comunas_1.cargarcomunasunidas().equals(setComunas_2(3));
+      
+       comunas_1.setId(3);
+       comunas_1.setComunas(2);
+       comunas_1.setComunas(4);
+       comunas_1.setComunas(1);
+       comunas_1.setCantidad(3);
+       comunas_1.setValor(1200);
+       com.add(comunas_1);
+
+
+       comunas comunas_2 = new comunas();
+       comunas_2.setId(5);
+       comunas_2.setComunas(6);
+       comunas_2.setComunas(7);
+       comunas_2.setComunas(8);
+       comunas_2.setCantidad(3);
+       comunas_2.setValor(1500);
+       com.add(comunas_2);
+       //ejemploLista.get(1).add(comunas_2);
+       
+      // for (int i = 0; i <= ejemploLista.size() - 1; i++) {
+        //    System.out.println(""+ejemploLista.get(0)+"");
+        //}
+       
+    
+       
        int valor = 0;
        int comp = 0; 
-       int[] comprobar = {0,0,0,0};
-       
-       for(int i = 0;i<comprobar.length;i++){
-       comp = i+1;
-       comprobar_ID(comunas,comp,i,comprobar,array_comunas,valor); 
+       int[] comprobar = {1,1,0,1,0,0,0,0};
+       //System.out.println("tamaño "+com.size()+"\n"); 
+       comp = 0;
+       for(int i = 0;i<com.size();i++){
+       //System.out.println("puesto: "+i+"\n");
+       comp = 0;
+       int[] array_comunas = com.get(i).obtener_comunas();     
+       int z = 0; 
+       do{     
+           comp = comp+1; 
+           comprobar_ID(com,comp,z,comprobar,array_comunas,valor,i);
+           z++;
+       }while(z < comprobar.length);
        }
        
         
     }
 
-    private static void comprobar_ID(comunas comunas, int comp,int i,int[]comprobar, int[] array_comunas,int valor) {
-        if(comunas.getId()== comp && comprobar[i] == 0){
-            comprobar[i] = 1;
-             System.out.println("la posicion "+i+" y es la comuna: "+comunas.getId()+"\n");
+    private static void comprobar_ID(List<comunas> comunas, int comp,int z,int[]comprobar, int[] array_comunas,int valor,int i) {
+        
+        //System.out.println("posicion vector: "+z+" de la comuna: "+ comunas.get(i).getId() +"\n");
+        //System.out.println("comp "+comp+" \n");
+        if(comunas.get(i).getId() == comp && comprobar[z] == 0){
+            comprobar[z] = 1;
+            System.out.println("la posicion "+comp+" y es la comuna: "+comunas.get(i).getId()+"\n");
+            System.out.println("la posicion "+z+"\n");
             //System.out.println("la posicion "+i+" es igual a "+comprobar[i]+"\n");
             System.out.println("empieza comprobar comunas\n");
-            comprobar_comunas(comprobar,comunas,comp,array_comunas); 
-            int total = comunas.getValor();
-             valor = valor + total;
-             System.out.println("la comuna: "+comunas.getId()+" puede seleccionarse\n");
-             System.out.println("el valor total de instalacion es: "+valor+"\n");
+            comprobar_comunas(comprobar,comunas,comp,i); 
         }else{
-            if(comprobar[i] == 1 && comunas.getId() == comp){
+            if(comprobar[z] == 1 && comunas.get(i).getId() == comp){
               System.out.println("la comuna ya se encuentra tomada\n");
             }
+            
         }
-    
+       
     }
 
-    private static void comprobar_comunas(int[] comprobar, comunas comunas, int comp,int[] array_comunas) {
-       int id = comunas.getId();
-       int posicion_comuna = 0;
+    private static void comprobar_comunas(int[] comprobar, List<comunas> comunas, int comp,int i) {
+       int id = comunas.get(i).getId();
+       int valor = comunas.get(i).getValor();
+       int [] comuna_2 = comunas.get(i).obtener_comunas(); 
+       int total = comunas.get(i).getValor();
+           
+       System.out.println("tamaño comuna: "+comuna_2.length +" del id: "+id+"\n");
+       //int posicion_comuna = 0;
+       comp = 0;
        int cont = 0;
-       
-        for(int j = 0; j < comprobar.length;j++){ 
-               comp = j+1;
-               int z = 0;
-             //for(int z = 0; z<= array_comunas.length;j++){ 
+        for(int j = 0; j < comuna_2.length;j++){ 
+                int z = 0;
+                int comuna = comuna_2[j]; 
                 do{
-                int comuna = array_comunas[z];
-                if(comuna == comp && comprobar[j] == 0){
-                 comprobar[j] = 1;
-                 comp = comp+1;
+                comp = comp+1;    
+                if(comuna == comp && comprobar[z] == 0){
+                 comprobar[z] = 1;
                  //posicion_comuna = posicion_comuna+1;
-                 System.out.println("la posicion "+j+" es igual a "+comprobar[j]+"\n");
+                     System.out.println("la posicion "+z+" es igual a "+comprobar[z]+"\n");
+                     comp = 0;
+                     break;
                     }else{
-                        if(comprobar[id-1] == 1){
+                        if(comuna == comp && comprobar[z] == 1){
+                            cont = cont+1;
+                            //System.out.println("contador de repetidos; "+cont+"\n"); 
+                            comp = 0;
+                            System.out.println("la comuna: "+comuna+" ya se encuentra tomada\n");
+                            if(cont == id){
+                            Borrar_1(id,comprobar);
                             }else{
-                                if(comuna == comp && comprobar[j] == 1){
-                                System.out.println("la comuna: "+comuna+" ya se encuentra tomada\n");
-                                cont = cont+1;
-                                //System.out.println("comunas tomadas es igual a:"+cont+"\n"); 
-                                comp = comp+1;
-                                posicion_comuna = posicion_comuna+1;
-                                    if(cont == comunas.getCantidad()){
-                                        Borrar_1(id,comprobar);
-                                    }
+                                if(z == comprobar.length){
+                                    valor = valor + total;
+                                    System.out.println("la comuna: "+id+" puede seleccionarse\n");
+                                    System.out.println("el valor total de instalacion es: "+valor+"\n");
                                 }
                             }
+                            break;
+                        }
                     }
                 z++;
-                }while(z < array_comunas.length );
+                }while(z < comprobar.length );
+                 
                 
                
             //} 
@@ -86,13 +127,13 @@ public class metahuristica {
     }
 
     private static void Borrar_1(int id, int[] comprobar) {
-        for(int j = 0; j<comprobar.length;j++){
+        //for(int j = 0; j<comprobar.length;j++){
             if(comprobar[id-1] == 1){
                 comprobar[id-1] = 0;
                 System.out.println("La comuna: "+id+" No puede tomarse porque sus comunas cercanas ya fueron tomadas\n"); 
-                System.out.println("por lo que el valor del array de la comuna: "+id+" es:"+comprobar[id-1]+"\n");     
+                System.out.println("por lo que el valor del array de la comuna: "+id+" es: "+comprobar[id-1]+"\n");     
             }
-        }
+        //}
     }
 
  
