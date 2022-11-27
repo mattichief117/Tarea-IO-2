@@ -6,7 +6,7 @@ import java.util.List;
 public class comunas {
     
     private int id;
-    //private comunas_unidas comunas_array[] = null;
+    private comunas_unidas comunas_array[] = null;
     private static ArrayList<Integer> comunas = new ArrayList<Integer>();
     private int cantidad;
     private int valor;
