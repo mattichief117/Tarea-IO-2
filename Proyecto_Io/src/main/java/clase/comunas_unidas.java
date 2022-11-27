@@ -34,7 +34,7 @@ public class comunas_unidas {
     private int[] comuna_29 = {3,5,27,28};
     private int[] comuna_30 = {14,16,31,34,36,37,38};
     private int[] comuna_31 = {14,17,3,35,38};
-    private int[] comuna_32 = {1};
+    //private int[] comuna_32 = {1};
     private int[] comuna_33 = {10,13,15,17,35};
     private int[] comuna_34 = {18,19,20,21,30,36};
     private int[] comuna_35 = {17,31,33};
@@ -73,7 +73,7 @@ public class comunas_unidas {
     this.comuna_29 = comuna_29;
     this.comuna_30 = comuna_30;
     this.comuna_31 = comuna_31;
-    this.comuna_32 = comuna_32;
+    //this.comuna_32 = comuna_32;
     this.comuna_33 = comuna_33;
     this.comuna_34 = comuna_34;
     this.comuna_35 = comuna_35;
@@ -323,13 +323,13 @@ public class comunas_unidas {
         this.comuna_31 = comuna_31;
     }
 
-    public int[] getComuna_32() {
-        return comuna_32;
-    }
+   // public int[] getComuna_32() {
+      //  return comuna_32;
+   // }
 
-    public void setComuna_32(int[] comuna_32) {
-        this.comuna_32 = comuna_32;
-    }
+    //public void setComuna_32(int[] comuna_32) {
+     //   this.comuna_32 = comuna_32;
+   // }
 
     public int[] getComuna_33() {
         return comuna_33;
