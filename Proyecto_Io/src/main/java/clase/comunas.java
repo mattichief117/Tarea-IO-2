@@ -30,11 +30,6 @@ public class comunas {
     public comunas() {
         this.id = id;
         this.cantidad = cantidad;
-        //this.comunas_array = comunas_array;
-        //comunas Milista = new comunas();
-       //this.comunas = new ArrayList<Integer>();
-       //this.suma = new ArrayList<Double>();
-       //this.array = null;
     }
     
    // public comunas_unidas[] cargarcomunasunidas(){
@@ -62,6 +57,13 @@ public class comunas {
         return this.array;
     }
     
+    public void eliminar_comunas(){
+    //this.array = null;
+    this.comunas = new ArrayList<Integer>();
+    this.suma = new ArrayList<Double>();
+    //return this.array;
+    }
+    
     public static void setComunas(int numero) {
        comunas.add(numero);
     }
@@ -76,6 +78,8 @@ public class comunas {
         }
         return this.array_suma;
     }
+    
+    
     
     public static void setSuma(double numero) {
        suma.add(numero);
