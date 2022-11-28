@@ -1,9 +1,9 @@
 package clase;
 
 import java.util.ArrayList;
-
+//en este apartado es donde se guardan las comunas conectadas con las comunas principales (ejemplo comuna 2 contiene (4,5,6))
 public class comunas_unidas {
-    
+    //aqui se guardan las comunas para comrpobar mas adelante en el programa
     private int[] comuna_2 = {4,5,28};
     private int[] comuna_3 = {5,28,27};
     private int[] comuna_4 = {2,5,28,26,25};
@@ -41,7 +41,8 @@ public class comunas_unidas {
     private int[] comuna_36 = {30,34,38};
     private int[] comuna_37 = {14,30,37};
     private int[] comuna_38 = {31,14,30,36};
-
+        
+    //aqui se genera el constructor de la clase comunas_unidas 
     public comunas_unidas() {
     this.comuna_2 = comuna_2;
     this.comuna_3 = comuna_3;
@@ -82,7 +83,7 @@ public class comunas_unidas {
     this.comuna_38 = comuna_38;
     }
 
-  
+   //en este apartado se obtienen las comunas (get), el insert no se utiliza.
     public int[] getComuna_2() {
         return comuna_2;
     }
